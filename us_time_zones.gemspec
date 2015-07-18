@@ -31,8 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   # Below added by me
-  # spec.add_development_dependency "httparty", '~> 0'
-  # spec.add_development_dependency "json", '~> 0'
+  # Runtime dependencies are the gems needed for your own gem to run within another program; not specifying these gems here (in addition to in the Gemfile) may prevent others from using your gem in their program unless their program already happens to have those particular gems installed itself.
   spec.add_runtime_dependency "httparty"
   spec.add_runtime_dependency "json"
 end

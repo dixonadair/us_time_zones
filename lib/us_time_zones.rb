@@ -1,5 +1,11 @@
 require "us_time_zones/version"
 
+require_relative "us_time_zones/tz_coord_files/hawaii_aleutian"
+# require "us_time_zones/tz_coord_files/alaska"
+# require "us_time_zones/tz_coord_files/pacific"
+# require "us_time_zones/tz_coord_files/central"
+# require "us_time_zones/tz_coord_files/eastern"
+
 require "json"
 require "httparty"
 
@@ -15,6 +21,18 @@ class USTZones
 			p "You're in the USA"
 		else
 			p "You're not in the USA"
+		end
+	end
+end
+
+# 53.37734988622845, -169.504588281682
+
+class TZtest
+	def self.test(lat,lng)
+		if HAWAII_ALEUTIAN.include?([lat,lng])
+			p "includes!"
+		else
+			p "does not include!"
 		end
 	end
 end
