@@ -9,7 +9,7 @@ class USTZones
 		response = HTTParty.get(url).to_json
 		response = JSON.parse(response)
 
-		if response["results"] != []
+		if response["results"] == []
 			p "Error"
 		elsif response["results"][0]["formatted_address"].include?("USA")
 			p "You're in the USA"
