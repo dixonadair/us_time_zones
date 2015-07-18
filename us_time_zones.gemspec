@@ -31,8 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   # Below added by me
-  spec.add_development_dependency "httparty"
-  spec.add_development_dependency "json"
-  spec.add_runtime_dependency "httparty"
-  spec.add_runtime_dependency "json"
+  spec.add_development_dependency "httparty", '~> 0'
+  spec.add_development_dependency "json", '~> 0'
+  # spec.add_runtime_dependency "httparty", '~> 0'
+  # spec.add_runtime_dependency "json", '~> 0'
 end
