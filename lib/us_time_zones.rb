@@ -51,7 +51,7 @@ class TZtest
 end
 
 class TZ
-	def pointInPolygon?(shape_coords_arr, point)
+	def self.pointInPolygon?(shape_coords_arr, point)
 		polygon = GeoRuby::SimpleFeatures::Polygon.from_coordinates(HAWAII_ALEUTIAN)
 		puts polygon.contains_point?(point)
 	end
