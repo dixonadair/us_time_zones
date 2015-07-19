@@ -52,7 +52,9 @@ end
 
 class TZ
 	def self.pointInPolygon?(shape_coords_arr, point)
-		polygon = GeoRuby::SimpleFeatures::Polygon.from_coordinates(HAWAII_ALEUTIAN)
+		polygon = GeoRuby::SimpleFeatures::Polygon.from_coordinates([[[53.33434512824876, -172.3672895105823], [53.37738931378584, -169.5046181489856], [53.37734988622845, -169.504588281682], [52.52095253013979, -169.5124025591721]]])
+		p polygon
+		p point
 		puts polygon.contains_point?(point)
 	end
 end
