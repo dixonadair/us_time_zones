@@ -18,48 +18,15 @@ require 'geo_ruby/kml'        # KML data
 require 'geo_ruby/georss'     # GeoRSS
 require 'geo_ruby/geojson'    # GeoJSON
 
-alaska = GeoRuby::SimpleFeatures::Polygon.from_coordinates([ALASKA])
-hawaii_aleutian_1 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_1])
-hawaii_aleutian_2 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_2])
-central = GeoRuby::SimpleFeatures::Polygon.from_coordinates([CENTRAL])
-eastern = GeoRuby::SimpleFeatures::Polygon.from_coordinates([EASTERN])
-pacific = GeoRuby::SimpleFeatures::Polygon.from_coordinates([PACIFIC])
-
-class USTZones
-	def self.getZone(lat, lng)
-		if lat.class != String
-			lat = lat.to_s
-		end
-		if lng.class != String
-			lng = lng.to_s
-		end
-		url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{lng}&key=AIzaSyBgUT0t3K3y9cKJgITa8X1O7uGYjguNZT4"
-		response = HTTParty.get(url).to_json
-		response = JSON.parse(response)
-
-		if response["results"] == []
-			p "Error"
-		elsif response["results"][0]["formatted_address"].include?("USA")
-			p "You're in the USA"
-		else
-			p "You're not in the USA"
-		end
-	end
-end
-
-# 53.37734988622845, -169.504588281682
-class TZtest
-	def self.test(lat, lng)
-		if HAWAII_ALEUTIAN.include?([lat,lng])
-			p "includes bla bla!"
-		else
-			p "does not include bla bla bla!"
-		end
-	end
-end
-
 class TZ
 	def self.whichTZ?(point)
+		alaska = GeoRuby::SimpleFeatures::Polygon.from_coordinates([ALASKA])
+		hawaii_aleutian_1 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_1])
+		hawaii_aleutian_2 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_2])
+		central = GeoRuby::SimpleFeatures::Polygon.from_coordinates([CENTRAL])
+		eastern = GeoRuby::SimpleFeatures::Polygon.from_coordinates([EASTERN])
+		pacific = GeoRuby::SimpleFeatures::Polygon.from_coordinates([PACIFIC])
+		
 		pointObject = GeoRuby::SimpleFeatures::Point.from_x_y(point[0], point[1])
 		url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{point[0].to_s},#{point[1].to_s}&key=AIzaSyBgUT0t3K3y9cKJgITa8X1O7uGYjguNZT4"
 		response = HTTParty.get(url).to_json
