@@ -8,11 +8,17 @@ require_relative "us_time_zones/tz_coord_files/hawaii_aleutian"
 
 require "json"
 require "httparty"
+require "georuby"
+# The below may or may not also be necessary; included just in case
+require 'geo_ruby/ewk'        # EWKT/EWKB
+require 'geo_ruby/shp'        # Shapefile
+require 'geo_ruby/gpx'        # GPX data
+require 'geo_ruby/kml'        # KML data
+require 'geo_ruby/georss'     # GeoRSS
+require 'geo_ruby/geojson'    # GeoJSON
 
 class USTZones
 	def self.getZone(lat, lng)
-		p lat.class
-		p lng.class
 		if lat.class != String
 			lat = lat.to_s
 		end
@@ -34,7 +40,6 @@ class USTZones
 end
 
 # 53.37734988622845, -169.504588281682
-
 class TZtest
 	def self.test(lat, lng)
 		if HAWAII_ALEUTIAN.include?([lat,lng])
@@ -42,5 +47,12 @@ class TZtest
 		else
 			p "does not include bla bla bla!"
 		end
+	end
+end
+
+class TZ
+	def pointInPolygon?(shape_coords_arr, point)
+		polygon = GeoRuby::SimpleFeatures::Polygon.from_coordinates()
+		polygon
 	end
 end

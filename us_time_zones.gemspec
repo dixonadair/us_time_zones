@@ -34,4 +34,5 @@ Gem::Specification.new do |spec|
   # Runtime dependencies are the gems needed for your own gem to run within another program; not specifying these gems here (in addition to in the Gemfile) may prevent others from using your gem in their program unless their program already happens to have those particular gems installed itself.
   spec.add_runtime_dependency "httparty"
   spec.add_runtime_dependency "json"
+  spec.add_runtime_dependency "georuby"
 end
