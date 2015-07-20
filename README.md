@@ -1,15 +1,13 @@
 # UsTimeZones
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/us_time_zones`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem takes in a set of coordinates and returns a US time zone as long as the input coordinates are in the US. The US’s time zone boundaries are surprisingly unusual, and the Google Maps time zone API, as well as other time zone APIs I have tested, do not perfectly account for some of the more esoteric boundaries.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'us_time_zones'
+gem 'us_time_zones', '~> 2.0.8'
 ```
 
 And then execute:
@@ -22,7 +20,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TZ.whichTZ?([LAT, LNG]) #==> returns US TIME ZONE
+
+Example:
+TZ.whichTZ?([33, -84]) #==> returns “US Eastern Time Zone”
+
+If outside the US:
+#==> returns "Unable to determine time zone for coordinates outside the US"
+OR
+#==> returns “Error”
+
 
 ## Development
 
