@@ -26,9 +26,9 @@ Example:
 TZ.whichTZ?([33, -84]) #==> returns “US Eastern Time Zone”
 
 If outside the US:
-#==> returns "Unable to determine time zone for coordinates outside the US"
+==> returns "Unable to determine time zone for coordinates outside the US"
 OR
-#==> returns “Error”
+==> returns “Error”
 
 
 ## Development
