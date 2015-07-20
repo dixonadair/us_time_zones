@@ -11,13 +11,14 @@ require_relative "us_time_zones/tz_coord_files/mountain"
 require "json"
 require "httparty"
 require "georuby"
+
 # The below may or may not also be necessary; included just in case
-require 'geo_ruby/ewk'        # EWKT/EWKB
-require 'geo_ruby/shp'        # Shapefile
-require 'geo_ruby/gpx'        # GPX data
-require 'geo_ruby/kml'        # KML data
-require 'geo_ruby/georss'     # GeoRSS
-require 'geo_ruby/geojson'    # GeoJSON
+# require 'geo_ruby/ewk'        # EWKT/EWKB
+# require 'geo_ruby/shp'        # Shapefile
+# require 'geo_ruby/gpx'        # GPX data
+# require 'geo_ruby/kml'        # KML data
+# require 'geo_ruby/georss'     # GeoRSS
+# require 'geo_ruby/geojson'    # GeoJSON
 
 Alaska = GeoRuby::SimpleFeatures::Polygon.from_coordinates([ALASKA])
 Hawaii_aleutian_1 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_1])

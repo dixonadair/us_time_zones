@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "httparty"
   spec.add_runtime_dependency "json"
   spec.add_runtime_dependency "georuby"
+  # spec.add_runtime_dependency "dbf"
 end
