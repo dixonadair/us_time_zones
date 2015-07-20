@@ -19,15 +19,15 @@ require 'geo_ruby/kml'        # KML data
 require 'geo_ruby/georss'     # GeoRSS
 require 'geo_ruby/geojson'    # GeoJSON
 
+Alaska = GeoRuby::SimpleFeatures::Polygon.from_coordinates([ALASKA])
+Hawaii_aleutian_1 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_1])
+Hawaii_aleutian_2 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_2])
+Central = GeoRuby::SimpleFeatures::Polygon.from_coordinates([CENTRAL])
+Eastern = GeoRuby::SimpleFeatures::Polygon.from_coordinates([EASTERN])
+Pacific = GeoRuby::SimpleFeatures::Polygon.from_coordinates([PACIFIC])
+Mountain = GeoRuby::SimpleFeatures::Polygon.from_coordinates([MOUNTAIN])
+
 class TZ
-	alaska = GeoRuby::SimpleFeatures::Polygon.from_coordinates([ALASKA])
-	hawaii_aleutian_1 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_1])
-	hawaii_aleutian_2 = GeoRuby::SimpleFeatures::Polygon.from_coordinates([HAWAII_ALEUTIAN_2])
-	central = GeoRuby::SimpleFeatures::Polygon.from_coordinates([CENTRAL])
-	eastern = GeoRuby::SimpleFeatures::Polygon.from_coordinates([EASTERN])
-	pacific = GeoRuby::SimpleFeatures::Polygon.from_coordinates([PACIFIC])
-	mountain = GeoRuby::SimpleFeatures::Polygon.from_coordinates([MOUNTAIN])
-	
 	def self.whichTZ?(point)
 		pointObject = GeoRuby::SimpleFeatures::Point.from_x_y(point[0], point[1])
 		url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{point[0].to_s},#{point[1].to_s}&key=AIzaSyBgUT0t3K3y9cKJgITa8X1O7uGYjguNZT4"
@@ -37,17 +37,17 @@ class TZ
 		if response["results"] == []
 			return "Error"
 		elsif response["results"][0]["formatted_address"].include?("USA")
-			if eastern.contains_point?(pointObject)
+			if Eastern.contains_point?(pointObject)
 				return "US Eastern Time Zone"
-			elsif central.contains_point?(pointObject)
+			elsif Central.contains_point?(pointObject)
 				return "US Central Time Zone"
-			elsif pacific.contains_point?(pointObject)
+			elsif Pacific.contains_point?(pointObject)
 				return "US Pacific Time Zone"
-			elsif mountain.contains_point?(pointObject)
+			elsif Mountain.contains_point?(pointObject)
 				return "US Mountain Time Zone"
-			elsif hawaii_aleutian_1.contains_point?(pointObject) || hawaii_aleutian_2.contains_point?(pointObject)
+			elsif Hawaii_aleutian_1.contains_point?(pointObject) || Hawaii_aleutian_2.contains_point?(pointObject)
 				return "US Hawaii-Aleutian Time Zone"
-			elsif alaska.contains_point?(pointObject)
+			elsif Alaska.contains_point?(pointObject)
 				return "US Alaska Time Zone"
 			end	
 		else
