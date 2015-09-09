@@ -7,7 +7,7 @@ This gem takes in a set of coordinates and returns a US time zone as long as the
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'us_time_zones', '~> 2.0.8'
+gem 'us_time_zones', '~> 2.0.9'
 ```
 
 And then execute:
