@@ -1,6 +1,6 @@
 # UsTimeZones
 
-This gem takes in a set of coordinates and returns a US time zone as long as the input coordinates are in the US. The US’s time zone boundaries are surprisingly unusual, and the Google Maps time zone API, as well as other time zone APIs I have tested, do not perfectly account for some of the more esoteric boundaries.
+This gem takes in a set of coordinates and returns a US time zone as long as the input coordinates are in the US. The gem should therefore be used in conjunction with other time zone APIs to ensure international coverage. The US’s time zone boundaries are surprisingly unusual, and the Google Maps time zone API, as well as other APIs I have tested, do not perfectly account for some of the more esoteric boundaries.
 
 ## Installation
 
